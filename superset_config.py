@@ -21,7 +21,7 @@ JWT_SECRET = os.getenv("SUPERSET_JWT_SECRET", "jwt_inseguro_cambiar")
 
 # --- Settings for Embedding & Guest Tokens ---
 # ENABLE_EMBEDDED_SUPERSET is controlled by env var
-ALLOWED_EMBEDDED_DOMAINS = ["http://localhost:8000","http://localhost:3001","http://localhost:3002"]
+ALLOWED_EMBEDDED_DOMAINS = ["http://localhost:8100","http://localhost:3001","http://localhost:3002"]
 
 
 # --- Session Cookie Settings ---

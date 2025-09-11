@@ -365,9 +365,10 @@ async def get_guest_token_full_endpoint(user_id: str = "default_full_user"):
 # --- Run Instruction ---
 if __name__ == "__main__":
     import uvicorn
-    port = int(os.getenv("PORT", 8000))
-    host = os.getenv("HOST", "0.0.0.0")
-    reload_flag = bool(os.getenv("RELOAD", "False").lower() in ['true', '1', 'yes'])
-    logger.info(f"Starting FastAPI development server on http://{host}:{port}")
-    logger.info(f"Auto-reload {'enabled' if reload_flag else 'disabled'}.")
-    uvicorn.run("main:app", host=host, port=port, reload=reload_flag)
+    #port = int(os.getenv("PORT", 8100))
+    #host = os.getenv("HOST", "0.0.0.0")
+    #reload_flag = bool(os.getenv("RELOAD", "False").lower() in ['true', '1', 'yes'])
+    #logger.info(f"Starting FastAPI development server on http://{host}:{port}")
+    #logger.info(f"Auto-reload {'enabled' if reload_flag else 'disabled'}.")
+    #uvicorn.run("main:app", host=host, port=port, reload=reload_flag)
+    uvicorn.run(app, host="0.0.0.0", port=8100)
