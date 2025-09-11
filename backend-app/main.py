@@ -38,7 +38,7 @@ SUPERSET_ADMIN_USER = os.getenv("SUPERSET_ADMIN_USER", "admin")
 SUPERSET_ADMIN_PASSWORD = os.getenv("SUPERSET_ADMIN_PASSWORD", "admin")
 SUPERSET_DASHBOARD_ID = os.getenv("SUPERSET_DASHBOARD_ID")
 SUPERSET_RLS_ROLE_NAME = os.getenv("SUPERSET_RLS_ROLE_NAME", "Gamma")
-FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:5173")
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3002")
 
 logger.info(f"SUPERSET_RLS_ROLE_NAME (base guest role): {SUPERSET_RLS_ROLE_NAME}")
 logger.info(f"RLS based on column: '{RLS_COLUMN_NAME}'")
