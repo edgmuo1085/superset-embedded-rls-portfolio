@@ -143,3 +143,5 @@ react_app/.env.test.local
 # Add any other specific files or directories you don't want to track
 # Example: large data files used for testing
 # data/*.csv
+
+frontend-app
