@@ -9,7 +9,7 @@ logger.info("⚡ Config personalizada cargada ⚡")
 
 
 ### IMPRIMIR VARIABLES DE ENTORNO   
-logger.info("ALLOWED_EMBEDDED_DOMAINS: %s", os.environ.get("ALLOWED_EMBEDDED_DOMAINS", "http://localhost:3001"))
+logger.info("ALLOWED_EMBEDDED_DOMAINS: %s", os.environ.get("ALLOWED_EMBEDDED_DOMAINS", ""))
 logger.info("SUPERSET_SECRET_KEY: %s", os.environ.get("SUPERSET_SECRET_KEY", "a-very-secure-secret-key"))
 logger.info("SUPERSET_JWT_SECRET: %s", os.environ.get("SUPERSET_JWT_SECRET", "a-very-secure-secret-key"))
 logger.info("SUPERSET_SQLALCHEMY_DATABASE_URI: %s", os.environ.get("SUPERSET_SQLALCHEMY_DATABASE_URI", "postgresql+psycopg2://superset:superset@db:5432/superset"))
@@ -27,7 +27,7 @@ JWT_SECRET = os.getenv("SUPERSET_JWT_SECRET", "jwt_inseguro_cambiar")
 ALLOWED_EMBEDDED_DOMAINS = os.environ.get("ALLOWED_EMBEDDED_DOMAINS", "").split(",")
 ALLOWED_EMBEDDED_DOMAINS = [domain.strip() for domain in ALLOWED_EMBEDDED_DOMAINS if domain.strip()]
 if not ALLOWED_EMBEDDED_DOMAINS:
-    ALLOWED_EMBEDDED_DOMAINS = ["http://localhost:3001"]
+    ALLOWED_EMBEDDED_DOMAINS = ["http://localhost:8000"]
 
 # ==============================
 # 🖼️ Embedding en iframes
@@ -63,4 +63,5 @@ EMBEDDED_SUPERSET = {
     "allowed_domains": ALLOWED_EMBEDDED_DOMAINS,
 }
 
+logger.info("ALLOWED_EMBEDDED_DOMAINS: %s", ALLOWED_EMBEDDED_DOMAINS)
 logger.info("✅ Embedding habilitado con rol %s", GUEST_ROLE_NAME)
