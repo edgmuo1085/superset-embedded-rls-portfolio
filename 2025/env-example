@@ -1,0 +1,4 @@
+ALLOWED_EMBEDDED_DOMAINS=http://localhost:3001
+METADATA_DB_URI=postgresql+psycopg2://superset:superset@db:5432/superset
+SUPERSET_SECRET_KEY=1
+SUPERSET_JWT_SECRET=1

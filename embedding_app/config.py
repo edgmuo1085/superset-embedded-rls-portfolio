@@ -12,11 +12,7 @@ ADMIN_CREDENTIALS = {
 # Mapping of Manufacturer names to their login passwords
 # IMPORTANT: Storing plain text passwords here is insecure for production.
 MANUFACTURER_PASSWORDS = {
-    "Cipla Ltd": "cipla",
-    "Torrent Pharmaceuticals Ltd": "torrent",
-    "Sun Pharmaceutical Industries Ltd": "sun",
-    "Intas Pharmaceuticals Ltd": "intas",
-    "Lupin Ltd": "lupin",
+    "Cipla Ltd": "cipla"
     # Add more manufacturers and passwords as needed
 }
 
