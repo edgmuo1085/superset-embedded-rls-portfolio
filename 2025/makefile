@@ -49,6 +49,6 @@ examples:
 delete:
 	docker volume prune -f
 
-# Eliminar volumenes no usuados
-show:
+# Visualizar volumenes de home
+home:
 	docker ps -a --filter volume=superset_superset_home
