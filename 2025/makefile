@@ -55,4 +55,4 @@ home:
 
 # Testing web
 web:
-	curl -I http:localhost:8088/
+	curl -I http://localhost:8088/
