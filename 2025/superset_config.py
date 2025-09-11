@@ -73,5 +73,5 @@ EMBEDDED_SUPERSET = {
     "allowed_domains": ALLOWED_EMBEDDED_DOMAINS,
 }
 
-logger.info("ALLOWED_EMBEDDED_DOMAINS: %s", ALLOWED_EMBEDDED_DOMAINS.split(","))
+logger.info("ALLOWED_EMBEDDED_DOMAINS: %s", "|".join(map(str,ALLOWED_EMBEDDED_DOMAINS)))
 logger.info("✅ Embedding habilitado con rol %s", GUEST_ROLE_NAME)
