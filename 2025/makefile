@@ -1,6 +1,6 @@
 PROJECT_NAME=superset
 
-.PHONY: up build down restart log logs init bash examples delete
+.PHONY: up build down restart log logs init bash examples delete show
 
 # Levanta el stack
 up:
@@ -48,3 +48,7 @@ examples:
 # Eliminar volumenes no usuados
 delete:
 	docker volume prune -f
+
+# Eliminar volumenes no usuados
+show:
+	docker ps -a --filter volume=superset_superset_home
