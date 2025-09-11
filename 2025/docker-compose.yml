@@ -6,8 +6,7 @@ services:
     container_name: superset_app
     environment:
       - SUPERSET_CONFIG_PATH=/app/pythonpath/superset_config.py
-      - SUPERSET_JWT_SECRET=${SUPERSET_JWT_SECRET}
-      - SUPERSET_SECRET_KEY=tu_super_secret_key
+      - SUPERSET_SECRET_KEY=${SUPERSET_SECRET_KEY}
       - DATABASE_DIALECT=postgresql
       - DATABASE_HOST=db
       - DATABASE_PORT=5432
@@ -22,8 +21,6 @@ services:
       - redis
     volumes:
       - superset_home:/app/superset_home
-      - ./superset_config.py:/app/pythonpath/superset_config.py
-      - ./connection.py:/app/pythonpath/connection.py
     #extra_hosts:
     #  - "host.docker.internal:10.0.2.15"
 
@@ -31,7 +28,7 @@ services:
     image: apache/superset:latest
     command: celery --app=superset.tasks.celery_app:app worker
     environment:
-      - SUPERSET_SECRET_KEY=tu_super_secret_key
+      - SUPERSET_SECRET_KEY=${SUPERSET_SECRET_KEY}
       - DATABASE_HOST=db
       - DATABASE_USER=superset
       - DATABASE_PASSWORD=superpass
@@ -47,7 +44,7 @@ services:
     image: apache/superset:latest
     command: celery --app=superset.tasks.celery_app:app beat
     environment:
-      - SUPERSET_SECRET_KEY=tu_super_secret_key
+      - SUPERSET_SECRET_KEY=${SUPERSET_SECRET_KEY}
       - DATABASE_HOST=db
       - DATABASE_USER=superset
       - DATABASE_PASSWORD=superpass
