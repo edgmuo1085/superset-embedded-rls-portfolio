@@ -56,7 +56,7 @@ CORS_OPTIONS = {
   'supports_credentials': True,
   'allow_headers': ['*'],
   'resources':['*'],
-  'origins': ALLOWED_EMBEDDED_DOMAINS
+  'origins': ",".join(map(str,ALLOWED_EMBEDDED_DOMAINS))
 }
 
 # ==============================
@@ -73,5 +73,5 @@ EMBEDDED_SUPERSET = {
     "allowed_domains": ALLOWED_EMBEDDED_DOMAINS,
 }
 
-logger.info("ALLOWED_EMBEDDED_DOMAINS: %s", "|".join(map(str,ALLOWED_EMBEDDED_DOMAINS)))
+logger.info("ALLOWED_EMBEDDED_DOMAINS: %s", ",".join(map(str,ALLOWED_EMBEDDED_DOMAINS)))
 logger.info("✅ Embedding habilitado con rol %s", GUEST_ROLE_NAME)
