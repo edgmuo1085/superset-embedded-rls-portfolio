@@ -1,0 +1,77 @@
+version: "3.9"
+services:
+  superset:
+    #image: apache/superset:latest #para que descargue la imagen
+    build: . # Aqui se usa el Dockerfile local
+    container_name: superset_app
+    environment:
+      - SUPERSET_SECRET_KEY=${SUPERSET_SECRET_KEY}
+      - DATABASE_DIALECT=postgresql
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - DATABASE_USER=superset
+      - DATABASE_PASSWORD=superpass
+      - DATABASE_DB=superset
+      - REDIS_HOST=redis
+    ports:
+      - "8088:8088"
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - superset_home:/app/superset_home
+    #extra_hosts:
+    #  - "host.docker.internal:10.0.2.15"
+
+  worker:
+    image: apache/superset:latest
+    command: celery --app=superset.tasks.celery_app:app worker
+    environment:
+      - SUPERSET_SECRET_KEY=${SUPERSET_SECRET_KEY}
+      - DATABASE_HOST=db
+      - DATABASE_USER=superset
+      - DATABASE_PASSWORD=superpass
+      - DATABASE_DB=superset
+      - REDIS_HOST=redis
+    depends_on:
+      - db
+      - redis
+    #extra_hosts:
+    #  - "host.docker.internal:10.0.2.15"
+
+  beat:
+    image: apache/superset:latest
+    command: celery --app=superset.tasks.celery_app:app beat
+    environment:
+      - SUPERSET_SECRET_KEY=${SUPERSET_SECRET_KEY}
+      - DATABASE_HOST=db
+      - DATABASE_USER=superset
+      - DATABASE_PASSWORD=superpass
+      - DATABASE_DB=superset
+      - REDIS_HOST=redis
+    depends_on:
+      - db
+      - redis
+    #extra_hosts:
+    #  - "host.docker.internal:10.0.2.15"
+
+  redis:
+    image: redis:latest
+    container_name: superset_redis
+    volumes:
+      - redis_data:/data
+
+  db:
+    image: postgres:15
+    container_name: superset_db
+    environment:
+      POSTGRES_USER: superset
+      POSTGRES_PASSWORD: superpass
+      POSTGRES_DB: superset
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  superset_home:
+  redis_data:
+  db_data:

@@ -24,7 +24,7 @@ if not ALLOWED_EMBEDDED_DOMAINS:
     ALLOWED_EMBEDDED_DOMAINS = ["http://localhost:8000"]
 
 GUEST_TOKEN_JWT_SECRET = os.environ.get(
-    "SUPERSET_GUEST_TOKEN_JWT_SECRET",
+    "SUPERSET_JWT_SECRET",
     SECRET_KEY # Use main key for dev
 )
 
