@@ -9,9 +9,9 @@ logger.info("⚡ Config personalizada cargada ⚡")
 
 
 ### IMPRIMIR VARIABLES DE ENTORNO   
-logger.info("ALLOWED_EMBEDDED_DOMAINS: %s", os.environ.get("ALLOWED_EMBEDDED_DOMAINS", ""))
-logger.info("SUPERSET_SECRET_KEY: %s", os.environ.get("SUPERSET_SECRET_KEY", "a-very-secure-secret-key"))
-logger.info("SUPERSET_JWT_SECRET: %s", os.environ.get("SUPERSET_JWT_SECRET", "a-very-secure-secret-key"))
+logger.info("ALLOWED_EMBEDDED_DOMAINS: %s", os.environ.get("ALLOWED_EMBEDDED_DOMAINS", "http://localhost:3002"))
+logger.info("SUPERSET_SECRET_KEY: %s",      os.environ.get("SUPERSET_SECRET_KEY", "a-very-secure-secret-key"))
+logger.info("SUPERSET_JWT_SECRET: %s",      os.environ.get("SUPERSET_JWT_SECRET", "a-very-secure-secret-key"))
 logger.info("SUPERSET_SQLALCHEMY_DATABASE_URI: %s", os.environ.get("SUPERSET_SQLALCHEMY_DATABASE_URI", "postgresql+psycopg2://superset:superset@db:5432/superset"))
 
 
