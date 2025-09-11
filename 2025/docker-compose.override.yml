@@ -3,10 +3,11 @@ services:
   superset:
     environment:
       - SUPERSET_CONFIG_PATH=/app/pythonpath/superset_config.py
+      - SUPERSET_SECRET_KEY=${SUPERSET_SECRET_KEY}
       - SUPERSET_JWT_SECRET=${SUPERSET_JWT_SECRET}
       # Feature flags like embedding are controlled here or in superset_config.py
-      - SUPERSET_FEATURE_EMBEDDED_SUPERSET=true # Keep if embedding is needed
-      - SUPERSET_ENV=production
-      - SUPERSET_LOAD_EXAMPLES=no
+      #- SUPERSET_FEATURE_EMBEDDED_SUPERSET=true # Keep if embedding is needed
+      #- SUPERSET_ENV=production
+      #- SUPERSET_LOAD_EXAMPLES=no
     volumes:
       - ./superset_config.py:/app/pythonpath/superset_config.py

@@ -13,6 +13,8 @@ RUN apt-get update && apt-get install -y \
     # Clean up apt cache
     rm -rf /var/lib/apt/lists/*
 
+RUN pip install --no-cache-dir psycopg2-binary Flask-Cors
+
 # REMOVED: Microsoft ODBC driver installation steps are no longer needed.
 
 # Switch back to the superset user
@@ -22,17 +24,17 @@ USER superset
 # psycopg2-binary for the metadata DB
 # Flask-Cors for enabling CORS (if embedding is still needed)
 # REMOVED: pymssql is no longer needed.
-RUN pip install --no-cache-dir psycopg2-binary Flask-Cors
+#RUN pip install --no-cache-dir psycopg2-binary Flask-Cors
 
 # Copy the custom configuration files into the image.
-COPY superset_config.py /app/pythonpath/superset_config.py
+#COPY superset_config.py /app/pythonpath/superset_config.py
 COPY connection.py /app/pythonpath/connection.py
 
 # Optional: Set environment variables if needed (though most are in docker-compose.yml)
 # ENV SUPERSET_HOME=/app
 
 # Expose the port Superset runs on
-EXPOSE 8088
+#EXPOSE 8088
 
 # Define the command to run Superset (adjust if necessary based on base image)
 # CMD ["/usr/bin/run-server.sh"] # Assuming this script exists in the base image

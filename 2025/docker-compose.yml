@@ -5,7 +5,7 @@ services:
     build: . # Aqui se usa el Dockerfile local
     container_name: superset_app
     environment:
-      - SUPERSET_SECRET_KEY=${SUPERSET_SECRET_KEY}
+      - SUPERSET_SECRET_KEY=tu_super_secret_key
       - DATABASE_DIALECT=postgresql
       - DATABASE_HOST=db
       - DATABASE_PORT=5432
@@ -27,7 +27,7 @@ services:
     image: apache/superset:latest
     command: celery --app=superset.tasks.celery_app:app worker
     environment:
-      - SUPERSET_SECRET_KEY=${SUPERSET_SECRET_KEY}
+      - SUPERSET_SECRET_KEY=tu_super_secret_key
       - DATABASE_HOST=db
       - DATABASE_USER=superset
       - DATABASE_PASSWORD=superpass
@@ -43,7 +43,7 @@ services:
     image: apache/superset:latest
     command: celery --app=superset.tasks.celery_app:app beat
     environment:
-      - SUPERSET_SECRET_KEY=${SUPERSET_SECRET_KEY}
+      - SUPERSET_SECRET_KEY=tu_super_secret_key
       - DATABASE_HOST=db
       - DATABASE_USER=superset
       - DATABASE_PASSWORD=superpass
