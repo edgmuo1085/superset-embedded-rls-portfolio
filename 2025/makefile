@@ -1,6 +1,6 @@
 PROJECT_NAME=superset
 
-.PHONY: up build down restart log logs init bash examples delete show
+.PHONY: up build down restart log logs init bash examples delete home web
 
 # Levanta el stack
 up:
@@ -52,3 +52,7 @@ delete:
 # Visualizar volumenes de home
 home:
 	docker ps -a --filter volume=superset_superset_home
+
+# Testing web
+web:
+	curl -I http:localhost:8088/
