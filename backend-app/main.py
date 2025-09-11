@@ -301,7 +301,7 @@ async def handle_login(login_data: LoginRequest):
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Invalid Username or Password",
             )
-
+"""
     # --- If not Admin, check if it's a Manufacturer ---
     else:
         expected_password = MANUFACTURER_PASSWORDS.get(username) # username is manufacturer name here
@@ -328,7 +328,7 @@ async def handle_login(login_data: LoginRequest):
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Invalid Username or Password",
             )
-
+"""
 # --- RLS Token Endpoint (Unchanged, called by React for manufacturers) ---
 @app.get("/get-guest-token-rls")
 async def get_guest_token_rls_endpoint(manufacturer: str):
