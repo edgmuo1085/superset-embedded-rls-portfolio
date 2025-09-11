@@ -9,8 +9,8 @@ from urllib.parse import quote_plus
 
 # Use a strong secret key; override via environment variable if available.
 # Using the key you requested for development.
-SECRET_KEY = os.environ.get("SUPERSET_SECRET_KEY", "a-very-secure-secret-key")
-JWT_SECRET = os.environ.get("SUPERSET_JWT_SECRET", "a-very-secure-secret-key")
+SECRET_KEY = os.getenv("SUPERSET_SECRET_KEY", "default_inseguro_cambiar")
+JWT_SECRET = os.getenv("SUPERSET_JWT_SECRET", "jwt_inseguro_cambiar")
 
 # Superset metadata database URI (using PostgreSQL as backend)
 SQLALCHEMY_DATABASE_URI = os.environ.get(

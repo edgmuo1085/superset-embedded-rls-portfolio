@@ -10,8 +10,8 @@ logger.info("⚡ Config personalizada cargada ⚡")
 
 ### IMPRIMIR VARIABLES DE ENTORNO   
 logger.info("ALLOWED_EMBEDDED_DOMAINS: %s", os.environ.get("ALLOWED_EMBEDDED_DOMAINS", "http://localhost:3002"))
-logger.info("SUPERSET_SECRET_KEY: %s",      os.environ.get("SUPERSET_SECRET_KEY", "a-very-secure-secret-key"))
-logger.info("SUPERSET_JWT_SECRET: %s",      os.environ.get("SUPERSET_JWT_SECRET", "a-very-secure-secret-key"))
+logger.info("SUPERSET_SECRET_KEY: %s",      os.environ.get("SUPERSET_SECRET_KEY", "default_inseguro_cambiar"))
+logger.info("SUPERSET_JWT_SECRET: %s",      os.environ.get("SUPERSET_JWT_SECRET", "jwt_inseguro_cambiar"))
 logger.info("SUPERSET_SQLALCHEMY_DATABASE_URI: %s", os.environ.get("SUPERSET_SQLALCHEMY_DATABASE_URI", "postgresql+psycopg2://superset:superset@db:5432/superset"))
 
 
@@ -24,7 +24,7 @@ JWT_SECRET = os.getenv("SUPERSET_JWT_SECRET", "jwt_inseguro_cambiar")
 # --- Settings for Embedding & Guest Tokens ---
 # ENABLE_EMBEDDED_SUPERSET is controlled by env var
 
-ALLOWED_EMBEDDED_DOMAINS = os.environ.get("ALLOWED_EMBEDDED_DOMAINS", "").split(",")
+ALLOWED_EMBEDDED_DOMAINS = os.environ.get("ALLOWED_EMBEDDED_DOMAINS", "").split("|")
 ALLOWED_EMBEDDED_DOMAINS = [domain.strip() for domain in ALLOWED_EMBEDDED_DOMAINS if domain.strip()]
 if not ALLOWED_EMBEDDED_DOMAINS:
     ALLOWED_EMBEDDED_DOMAINS = ["http://localhost:8000","http://localhost:3001","http://localhost:3002"]
