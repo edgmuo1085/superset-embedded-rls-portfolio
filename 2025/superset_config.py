@@ -27,7 +27,7 @@ JWT_SECRET = os.getenv("SUPERSET_JWT_SECRET", "jwt_inseguro_cambiar")
 ALLOWED_EMBEDDED_DOMAINS = os.environ.get("ALLOWED_EMBEDDED_DOMAINS", "").split(",")
 ALLOWED_EMBEDDED_DOMAINS = [domain.strip() for domain in ALLOWED_EMBEDDED_DOMAINS if domain.strip()]
 if not ALLOWED_EMBEDDED_DOMAINS:
-    ALLOWED_EMBEDDED_DOMAINS = ["http://localhost:8000,http://localhost:3001,http://localhost:3002"]
+    ALLOWED_EMBEDDED_DOMAINS = ["http://localhost:8000","http://localhost:3001","http://localhost:3002"]
 
 # --- Session Cookie Settings ---
 SESSION_COOKIE_SAMESITE = None
@@ -53,6 +53,15 @@ FEATURE_FLAGS = {
     "DASHBOARD_NATIVE_FILTERS": True,
     "DASHBOARD_CROSS_FILTERS": True,
     "ENABLE_TEMPLATE_PROCESSING": True,
+}
+
+# --- CORS Configuration ---
+ENABLE_CORS = True
+CORS_OPTIONS = {
+  'supports_credentials': True,
+  'allow_headers': ['*'],
+  'resources':['*'],
+  'origins': ALLOWED_EMBEDDED_DOMAINS
 }
 
 # ==============================
