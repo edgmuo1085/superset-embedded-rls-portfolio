@@ -5,6 +5,8 @@ services:
     build: . # Aqui se usa el Dockerfile local
     container_name: superset_app
     environment:
+      - SUPERSET_CONFIG_PATH=/app/pythonpath/superset_config.py
+      - SUPERSET_JWT_SECRET=${SUPERSET_JWT_SECRET}
       - SUPERSET_SECRET_KEY=tu_super_secret_key
       - DATABASE_DIALECT=postgresql
       - DATABASE_HOST=db
@@ -20,6 +22,8 @@ services:
       - redis
     volumes:
       - superset_home:/app/superset_home
+      - ./superset_config.py:/app/pythonpath/superset_config.py
+      - ./connection.py:/app/pythonpath/connection.py
     #extra_hosts:
     #  - "host.docker.internal:10.0.2.15"
 

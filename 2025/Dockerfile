@@ -28,7 +28,7 @@ USER superset
 
 # Copy the custom configuration files into the image.
 #COPY superset_config.py /app/pythonpath/superset_config.py
-COPY connection.py /app/pythonpath/connection.py
+#COPY connection.py /app/pythonpath/connection.py
 
 # Optional: Set environment variables if needed (though most are in docker-compose.yml)
 # ENV SUPERSET_HOME=/app

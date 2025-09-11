@@ -8,8 +8,8 @@ up:
 
 # Levanta el stack build
 build:
-	#docker compose up -d --build
-	docker compose -f docker-compose.yml -f docker-compose.override.yml up -d --build
+	docker compose up -d --build
+	#docker compose -f docker-compose.yml -f docker-compose.override.yml up -d --build
 
 # Apaga y elimina contenedores + volúmenes
 down:
