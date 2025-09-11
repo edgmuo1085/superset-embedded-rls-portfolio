@@ -27,16 +27,22 @@ JWT_SECRET = os.getenv("SUPERSET_JWT_SECRET", "jwt_inseguro_cambiar")
 ALLOWED_EMBEDDED_DOMAINS = os.environ.get("ALLOWED_EMBEDDED_DOMAINS", "").split(",")
 ALLOWED_EMBEDDED_DOMAINS = [domain.strip() for domain in ALLOWED_EMBEDDED_DOMAINS if domain.strip()]
 if not ALLOWED_EMBEDDED_DOMAINS:
-    ALLOWED_EMBEDDED_DOMAINS = ["http://localhost:8000"]
+    ALLOWED_EMBEDDED_DOMAINS = ["http://localhost:8000,http://localhost:3001,http://localhost:3002"]
+
+# --- Session Cookie Settings ---
+SESSION_COOKIE_SAMESITE = None
+SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_HTTPONLY = False
 
 # ==============================
 # 🖼️ Embedding en iframes
 # ==============================
-ALLOW_IFRAME_EMBED = True
-HTTP_HEADERS = {
-    "X-Frame-Options": "ALLOWALL"
-}
+#ALLOW_IFRAME_EMBED = True
+#HTTP_HEADERS = {
+#    "X-Frame-Options": "ALLOWALL"
+#}
 TALISMAN_ENABLED = False
+ENABLE_PROXY_FIX = True
 
 # ==============================
 # 🚀 Feature flags
