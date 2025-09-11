@@ -8,6 +8,12 @@ logger = logging.getLogger(__name__)
 
 logger.info("⚡ Config personalizada cargada ⚡")
 
+### IMPRIMIR VARIABLES DE ENTORNO   
+logger.info("ALLOWED_EMBEDDED_DOMAINS: %s", os.environ.get("ALLOWED_EMBEDDED_DOMAINS", "").split(","))
+logger.info("SUPERSET_SECRET_KEY: %s", os.environ.get("SUPERSET_SECRET_KEY", "a-very-secure-secret-key"))
+logger.info("SUPERSET_JWT_SECRET: %s", os.environ.get("SUPERSET_JWT_SECRET", "a-very-secure-secret-key"))
+logger.info("SUPERSET_SQLALCHEMY_DATABASE_URI: %s", os.environ.get("SUPERSET_SQLALCHEMY_DATABASE_URI", "postgresql+psycopg2://superset:superset@db:5432/superset"))
+
 # ==============================
 # 🔑 Claves seguras desde variables de entorno
 # ==============================
