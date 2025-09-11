@@ -20,6 +20,8 @@ logger.info("SUPERSET_SQLALCHEMY_DATABASE_URI: %s", os.environ.get("SUPERSET_SQL
 # ==============================
 SECRET_KEY = os.getenv("SUPERSET_SECRET_KEY", "default_inseguro_cambiar")
 JWT_SECRET = os.getenv("SUPERSET_JWT_SECRET", "jwt_inseguro_cambiar")
+ALLOWED_EMBEDDED_DOMAINS_TMP = os.getenv("ALLOWED_EMBEDDED_DOMAINS", "jwt_inseguro_cambiar")
+logger.info("ALLOWED_EMBEDDED_DOMAINS_TMP: %s", ALLOWED_EMBEDDED_DOMAINS_TMP)
 
 # --- Settings for Embedding & Guest Tokens ---
 # ENABLE_EMBEDDED_SUPERSET is controlled by env var
