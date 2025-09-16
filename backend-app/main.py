@@ -89,7 +89,7 @@ def get_superset_tokens() -> Dict[str, str]:
         }
 
     logger.info("Attempting Superset API login to get access token (for CSRF extraction)...")
-    api_login_url = f"{SUPERSET_URL}/api/v1/security/login"
+    api_login_url = f"{SUPERSET_URL}/login"
     login_payload = {"username": SUPERSET_ADMIN_USER, "password": SUPERSET_ADMIN_PASSWORD, "provider": "db"}
     try:
         with requests.Session() as session:
@@ -155,7 +155,7 @@ async def _fetch_guest_token_base(payload: Dict[str, Any]) -> str:
          logger.error(f"Failed to obtain necessary tokens for guest token fetch: {e.detail}")
          raise e
 
-    guest_token_url = f"{SUPERSET_URL}/api/v1/security/guest_token/"
+    guest_token_url = f"{SUPERSET_URL}/guest_token/"
     headers = {
         "Authorization": f"Bearer {access_token}",
         "X-CSRFToken": csrf_token,
@@ -301,7 +301,7 @@ async def handle_login(login_data: LoginRequest):
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Invalid Username or Password",
             )
-"""
+
     # --- If not Admin, check if it's a Manufacturer ---
     else:
         expected_password = MANUFACTURER_PASSWORDS.get(username) # username is manufacturer name here
@@ -328,7 +328,7 @@ async def handle_login(login_data: LoginRequest):
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Invalid Username or Password",
             )
-"""
+
 # --- RLS Token Endpoint (Unchanged, called by React for manufacturers) ---
 @app.get("/get-guest-token-rls")
 async def get_guest_token_rls_endpoint(manufacturer: str):

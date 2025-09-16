@@ -15,7 +15,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 ENV SUPERSET_URL=http://localhost:8088 \
     SUPERSET_ADMIN_USER=admin \
     SUPERSET_ADMIN_PASSWORD=admin \
-    SUPERSET_DASHBOARD_ID=d5f8b9de-a936-4c69-aa7a-04401fabb40c \
+    SUPERSET_DASHBOARD_ID=d6683ddd-7da9-462f-bb26-3d68299032d4 \
     SUPERSET_RLS_ROLE_NAME=Gamma \
     FRONTEND_URL=http://localhost:3002
 
